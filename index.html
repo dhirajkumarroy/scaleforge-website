@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScaleForge — Backend Systems & Automation</title>
+  <meta name="description" content="ScaleForge builds high-performance backend systems, REST APIs, and automation workflows for growing businesses." />
+
+  <!-- Google Fonts: Outfit (display) + Plus Jakarta Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+
+      <a href="#home" class="logo">
+        <div class="logo-mark"><i class="fa-solid fa-layer-group"></i></div>
+        Scale<span>Forge</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"      class="nav-link active">Home</a></li>
+        <li><a href="#services"  class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#solutions" class="nav-link">Solutions</a></li>
+        <li><a href="#about"     class="nav-link">About</a></li>
+        <li><a href="#contact"   class="nav-link">Contact</a></li>
+        <li class="nav-cta-wrap"><a href="#contact" class="btn btn--nav">Get a Quote</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="home">
+    <div class="hero-geo hero-geo--ring1"></div>
+    <div class="hero-geo hero-geo--ring2"></div>
+    <div class="hero-dots"></div>
+
+    <div class="container hero__body">
+      <div class="hero__left">
+
+        <div class="hero-pill fade-in">
+          <span class="pill-dot"></span>
+          Trusted by startups &amp; growing businesses
+        </div>
+
+        <h1 class="hero-title fade-in fd2">
+          Build <span class="grad-text">Scalable Systems</span>
+          &amp; Automations<br class="brk" />
+          for Your Business
+        </h1>
+
+        <p class="hero-sub fade-in fd3">
+          We design high-performance backend systems, APIs, and automation
+          workflows to help your business grow faster — reliably and securely.
+        </p>
+
+        <div class="hero-actions fade-in fd4">
+          <a href="#portfolio" class="btn btn--primary btn--lg">
+            View Projects <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn--outline-dark btn--lg">Get in Touch</a>
+        </div>
+
+        <div class="hero-trust fade-in fd5">
+          <span class="trust-label">Built with</span>
+          <div class="trust-chips">
+            <span><i class="fa-brands fa-java"></i> Java</span>
+            <span><i class="fa-solid fa-leaf"></i> Spring Boot</span>
+            <span><i class="fa-solid fa-bolt"></i> n8n</span>
+            <span><i class="fa-solid fa-database"></i> PostgreSQL</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero__right fade-in fd3">
+        <div class="hcard-stack">
+
+          <div class="hcard hcard--main">
+            <div class="hcard-head">
+              <span class="hdot hdot--green"></span>
+              <span class="hcard-label">API Gateway — Live</span>
+            </div>
+            <div class="hcard-metrics">
+              <div class="hm"><span class="hm-val">99.9%</span><span class="hm-key">Uptime</span></div>
+              <div class="hm"><span class="hm-val">42ms</span><span class="hm-key">Avg Latency</span></div>
+              <div class="hm"><span class="hm-val">12K</span><span class="hm-key">Req / min</span></div>
+            </div>
+            <div class="hcard-bar"><div class="hcard-bar-fill"></div></div>
+          </div>
+
+          <div class="hcard hcard--flow">
+            <div class="hcard-head">
+              <i class="fa-solid fa-bolt hc-ico"></i>
+              <span>Automation Running</span>
+            </div>
+            <div class="flow-steps">
+              <div class="fs fs--done"><i class="fa-solid fa-check"></i> Order Received</div>
+              <div class="fs fs--done"><i class="fa-solid fa-check"></i> Payment Verified</div>
+              <div class="fs fs--active"><span class="pulse-ring"></span> Shipping Triggered</div>
+              <div class="fs fs--idle">Notification Sent</div>
+            </div>
+          </div>
+
+          <div class="hcard hcard--mini">
+            <i class="fa-solid fa-shield-halved hc-ico hc-ico--indigo"></i>
+            <div>
+              <p class="hm-val" style="font-size:.95rem;margin:0">JWT Secured</p>
+              <p class="hm-key" style="margin:0">All endpoints protected</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-statsbar fade-in fd6">
+      <div class="container statsbar-inner">
+        <div class="sbi"><strong>10+</strong><span>Projects Delivered</span></div>
+        <div class="sbi-sep"></div>
+        <div class="sbi"><strong>3+</strong><span>Years Experience</span></div>
+        <div class="sbi-sep"></div>
+        <div class="sbi"><strong>100%</strong><span>On-Time Delivery</span></div>
+        <div class="sbi-sep"></div>
+        <div class="sbi"><strong>24h</strong><span>Response Time</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section class="services section" id="services">
+    <div class="container">
+
+      <div class="sec-tag reveal">Our Expertise</div>
+      <div class="sec-head reveal rd1">
+        <h2 class="sec-title">Everything Your Backend Needs</h2>
+        <p class="sec-sub">From architecture to deployment — we handle the complexity so you can focus on growth.</p>
+      </div>
+
+      <div class="svc-grid">
+
+        <div class="svc-card reveal">
+          <div class="svc-icon ico--indigo"><i class="fa-solid fa-server"></i></div>
+          <h3>Backend API Development</h3>
+          <p>Production-grade REST APIs on Spring Boot — secured, documented, and performance-tested.</p>
+          <ul class="svc-tags"><li>Spring Boot</li><li>REST APIs</li><li>JWT Auth</li></ul>
+          <a href="#contact" class="svc-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="svc-card reveal rd1">
+          <div class="svc-icon ico--teal"><i class="fa-solid fa-cart-shopping"></i></div>
+          <h3>E-commerce Backend Systems</h3>
+          <p>End-to-end commerce: orders, payments, Shiprocket shipping, inventory — built to scale.</p>
+          <ul class="svc-tags"><li>Order Mgmt</li><li>Payments</li><li>Shiprocket</li></ul>
+          <a href="#contact" class="svc-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="svc-card reveal rd2">
+          <div class="svc-icon ico--amber"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Automation Solutions</h3>
+          <p>Turn repetitive workflows into automated pipelines using n8n and API integrations.</p>
+          <ul class="svc-tags"><li>n8n</li><li>API Integrations</li><li>Process Automation</li></ul>
+          <a href="#contact" class="svc-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="svc-card reveal">
+          <div class="svc-icon ico--rose"><i class="fa-solid fa-bug-slash"></i></div>
+          <h3>Bug Fixing &amp; Optimization</h3>
+          <p>Deep-dive debugging, performance profiling, and refactoring to eliminate bottlenecks.</p>
+          <ul class="svc-tags"><li>Debugging</li><li>Profiling</li><li>Refactoring</li></ul>
+          <a href="#contact" class="svc-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="svc-card reveal rd1">
+          <div class="svc-icon ico--violet"><i class="fa-solid fa-database"></i></div>
+          <h3>Database Design</h3>
+          <p>Normalized schemas, indexing strategy, and query optimization for MySQL &amp; PostgreSQL.</p>
+          <ul class="svc-tags"><li>MySQL</li><li>PostgreSQL</li><li>Schema Design</li></ul>
+          <a href="#contact" class="svc-link">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="svc-card svc-card--cta reveal rd2">
+          <i class="fa-solid fa-comments svc-cta-ico"></i>
+          <h3>Not sure what you need?</h3>
+          <p>Book a free 30-minute consultation. We'll help scope the right solution.</p>
+          <a href="#contact" class="btn btn--primary" style="margin-top:auto">Book a Call <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PORTFOLIO ===================== -->
+  <section class="portfolio section" id="portfolio">
+    <div class="container">
+
+      <div class="sec-tag reveal">Selected Work</div>
+      <div class="sec-head reveal rd1">
+        <h2 class="sec-title">Systems We've Built</h2>
+        <p class="sec-sub">Real projects, real results — every system is built for production from day one.</p>
+      </div>
+
+      <div class="proj-list">
+
+        <div class="proj-card reveal">
+          <div class="proj-meta">
+            <span class="proj-num">01</span>
+            <span class="proj-badge proj-badge--live"><span class="live-dot"></span> Live</span>
+          </div>
+          <div class="proj-body">
+            <h3>PaperKart</h3>
+            <p class="proj-type">E-commerce Backend System</p>
+            <p class="proj-desc">A full production e-commerce backend powering a stationery business — cart to doorstep, with Shiprocket logistics built in.</p>
+            <ul class="proj-features">
+              <li><i class="fa-solid fa-circle-check"></i> Order Management System</li>
+              <li><i class="fa-solid fa-circle-check"></i> Shiprocket Shipping Integration</li>
+              <li><i class="fa-solid fa-circle-check"></i> JWT Authentication &amp; Security</li>
+              <li><i class="fa-solid fa-circle-check"></i> Cart &amp; Inventory System</li>
+            </ul>
+            <div class="proj-stack">
+              <span>Spring Boot</span><span>MySQL</span><span>JWT</span><span>Shiprocket API</span><span>Spring Security</span>
+            </div>
+          </div>
+          <div class="proj-actions">
+            <!-- REPLACE: add your GitHub + live demo links -->
+            <a href="https://github.com/yourorg/paperkart" target="_blank" class="btn btn--outline btn--sm"><i class="fa-brands fa-github"></i> View Code</a>
+            <a href="#demos" class="btn btn--primary btn--sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal rd1">
+          <div class="proj-meta">
+            <span class="proj-num">02</span>
+            <span class="proj-badge">Open Source</span>
+          </div>
+          <div class="proj-body">
+            <h3>Secure REST API System</h3>
+            <p class="proj-type">Enterprise API Boilerplate</p>
+            <p class="proj-desc">A battle-tested REST API template with enterprise-grade auth, pagination, role-based access, and structured error handling.</p>
+            <ul class="proj-features">
+              <li><i class="fa-solid fa-circle-check"></i> JWT Authentication &amp; Refresh Tokens</li>
+              <li><i class="fa-solid fa-circle-check"></i> Pagination, Sorting &amp; Filtering</li>
+              <li><i class="fa-solid fa-circle-check"></i> Role-Based Access Control</li>
+              <li><i class="fa-solid fa-circle-check"></i> Swagger / OpenAPI Docs</li>
+            </ul>
+            <div class="proj-stack">
+              <span>Spring Boot</span><span>JPA</span><span>PostgreSQL</span><span>Spring Security</span>
+            </div>
+          </div>
+          <div class="proj-actions">
+            <!-- REPLACE: add your GitHub link -->
+            <a href="https://github.com/yourorg/secure-rest-api" target="_blank" class="btn btn--outline btn--sm"><i class="fa-brands fa-github"></i> View Code</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal rd2">
+          <div class="proj-meta">
+            <span class="proj-num">03</span>
+            <span class="proj-badge proj-badge--amber">Automation</span>
+          </div>
+          <div class="proj-body">
+            <h3>Automation Workflow System</h3>
+            <p class="proj-type">Business Process Automation</p>
+            <p class="proj-desc">Fully automated order-to-fulfillment pipeline using n8n — eliminating manual work from intake through delivery notification.</p>
+            <ul class="proj-features">
+              <li><i class="fa-solid fa-circle-check"></i> n8n Workflow Automation</li>
+              <li><i class="fa-solid fa-circle-check"></i> Multi-service API Integrations</li>
+              <li><i class="fa-solid fa-circle-check"></i> Task Scheduling &amp; Triggers</li>
+              <li><i class="fa-solid fa-circle-check"></i> Error Handling &amp; Retry Logic</li>
+            </ul>
+            <div class="proj-stack">
+              <span>n8n</span><span>REST APIs</span><span>Webhooks</span><span>PostgreSQL</span>
+            </div>
+          </div>
+          <div class="proj-actions">
+            <!-- REPLACE: add your links -->
+            <a href="https://github.com/yourorg/automation-system" target="_blank" class="btn btn--outline btn--sm"><i class="fa-brands fa-github"></i> View Code</a>
+            <a href="#demos" class="btn btn--primary btn--sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Demo</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOLUTIONS ===================== -->
+  <section class="solutions section" id="solutions">
+    <div class="container">
+
+      <div class="sec-tag reveal">Products</div>
+      <div class="sec-head reveal rd1">
+        <h2 class="sec-title">Ready-to-Use Solutions</h2>
+        <p class="sec-sub">Pre-built, production-ready systems you can deploy in days — not months.</p>
+      </div>
+
+      <div class="sol-grid">
+
+        <div class="sol-card reveal">
+          <div class="sol-top">
+            <div class="sol-icon"><i class="fa-solid fa-cube"></i></div>
+            <span class="sol-badge">Backend Kit</span>
+          </div>
+          <h3>E-commerce Backend Starter</h3>
+          <p>Complete Spring Boot backend with user auth, product catalog, cart, orders, and payment hooks.</p>
+          <ul class="sol-feats">
+            <li><i class="fa-solid fa-check"></i> User &amp; Auth system</li>
+            <li><i class="fa-solid fa-check"></i> Product &amp; Order APIs</li>
+            <li><i class="fa-solid fa-check"></i> Payment gateway hooks</li>
+          </ul>
+          <div class="sol-actions">
+            <a href="#demos" class="btn btn--outline btn--sm">View Demo</a>
+            <a href="#contact" class="btn btn--primary btn--sm">Request Setup</a>
+          </div>
+        </div>
+
+        <div class="sol-card reveal rd1">
+          <div class="sol-top">
+            <div class="sol-icon sol-icon--amber"><i class="fa-solid fa-key"></i></div>
+            <span class="sol-badge sol-badge--amber">API Kit</span>
+          </div>
+          <h3>API Starter Kit</h3>
+          <p>Production-ready API boilerplate with JWT auth, RBAC, pagination, and Swagger pre-configured.</p>
+          <ul class="sol-feats">
+            <li><i class="fa-solid fa-check"></i> JWT + Refresh tokens</li>
+            <li><i class="fa-solid fa-check"></i> RBAC out of the box</li>
+            <li><i class="fa-solid fa-check"></i> OpenAPI documentation</li>
+          </ul>
+          <div class="sol-actions">
+            <a href="#demos" class="btn btn--outline btn--sm">View Demo</a>
+            <a href="#contact" class="btn btn--primary btn--sm">Request Setup</a>
+          </div>
+        </div>
+
+        <div class="sol-card reveal rd2">
+          <div class="sol-top">
+            <div class="sol-icon sol-icon--teal"><i class="fa-solid fa-bolt"></i></div>
+            <span class="sol-badge sol-badge--teal">Automation</span>
+          </div>
+          <h3>Automation Template Pack</h3>
+          <p>10+ pre-built n8n workflow templates — order notifications, lead capture, invoicing, CRM sync.</p>
+          <ul class="sol-feats">
+            <li><i class="fa-solid fa-check"></i> 10+ workflow templates</li>
+            <li><i class="fa-solid fa-check"></i> Plug-and-play setup</li>
+            <li><i class="fa-solid fa-check"></i> Custom trigger support</li>
+          </ul>
+          <div class="sol-actions">
+            <a href="#demos" class="btn btn--outline btn--sm">View Demo</a>
+            <a href="#contact" class="btn btn--primary btn--sm">Request Setup</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DEMOS ===================== -->
+  <section class="demos section" id="demos">
+    <div class="container">
+
+      <div class="sec-tag reveal">Live Previews</div>
+      <div class="sec-head reveal rd1">
+        <h2 class="sec-title">Project Demos</h2>
+        <p class="sec-sub">See the systems in action. Explore live interfaces and real API responses.</p>
+      </div>
+
+      <div class="demos-grid">
+
+        <div class="demo-card reveal">
+          <div class="demo-preview">
+            <div class="mock-term">
+              <div class="mock-bar">
+                <div class="mock-dots"><span class="md r"></span><span class="md y"></span><span class="md g"></span></div>
+                <span class="mock-url">GET /api/v1/orders</span>
+                <span class="mock-status s-ok">200 OK</span>
+              </div>
+<pre class="mock-code">{
+  "status": "success",
+  "data": {
+    "orders": [
+      {
+        "id": "ORD-0041",
+        "customer": "Rahul S.",
+        "total": 1299.00,
+        "status": "shipped"
+      }
+    ],
+    "page": 1,
+    "total": 238
+  }
+}</pre>
+            </div>
+          </div>
+          <div class="demo-info">
+            <h3>PaperKart Order API</h3>
+            <p>Live REST API — paginated order listing with JWT auth.</p>
+            <div class="demo-btns">
+              <!-- REPLACE: add your live demo URL -->
+              <a href="https://demo.yoursite.com/paperkart" target="_blank" class="btn btn--primary btn--sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo</a>
+              <a href="https://github.com/yourorg/paperkart" target="_blank" class="btn btn--outline btn--sm"><i class="fa-brands fa-github"></i> View Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card reveal rd1">
+          <div class="demo-preview">
+            <div class="mock-term">
+              <div class="mock-bar">
+                <div class="mock-dots"><span class="md r"></span><span class="md y"></span><span class="md g"></span></div>
+                <span class="mock-url">POST /api/auth/login</span>
+                <span class="mock-status s-ok">200 OK</span>
+              </div>
+<pre class="mock-code">{
+  "status": "success",
+  "token": "eyJhbGciOiJIUzI1...",
+  "refreshToken": "dGhpcyBpcyBh...",
+  "expiresIn": 3600,
+  "user": {
+    "id": 12,
+    "role": "ADMIN",
+    "email": "user@co.com"
+  }
+}</pre>
+            </div>
+          </div>
+          <div class="demo-info">
+            <h3>Auth API System</h3>
+            <p>JWT login with refresh token rotation and role claims.</p>
+            <div class="demo-btns">
+              <!-- REPLACE: add your live demo URL -->
+              <a href="https://demo.yoursite.com/auth-api" target="_blank" class="btn btn--primary btn--sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo</a>
+              <a href="https://github.com/yourorg/secure-rest-api" target="_blank" class="btn btn--outline btn--sm"><i class="fa-brands fa-github"></i> View Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card reveal rd2">
+          <div class="demo-preview">
+            <div class="mock-term">
+              <div class="mock-bar">
+                <div class="mock-dots"><span class="md r"></span><span class="md y"></span><span class="md g"></span></div>
+                <span class="mock-url">n8n Workflow — Order Flow</span>
+                <span class="mock-status s-active">Running</span>
+              </div>
+              <div class="flow-vis">
+                <div class="fv fv--done"><i class="fa-solid fa-inbox"></i><span>Trigger</span></div>
+                <div class="fv-arr"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="fv fv--done"><i class="fa-solid fa-credit-card"></i><span>Payment</span></div>
+                <div class="fv-arr"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="fv fv--active"><i class="fa-solid fa-truck"></i><span>Shipping</span></div>
+                <div class="fv-arr fv-arr--dim"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="fv fv--idle"><i class="fa-solid fa-bell"></i><span>Notify</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-info">
+            <h3>Automation Workflow</h3>
+            <p>n8n order fulfillment pipeline — visualized step by step.</p>
+            <div class="demo-btns">
+              <!-- REPLACE: add your live demo URL -->
+              <a href="https://demo.yoursite.com/automation" target="_blank" class="btn btn--primary btn--sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo</a>
+              <a href="https://github.com/yourorg/automation-system" target="_blank" class="btn btn--outline btn--sm"><i class="fa-brands fa-github"></i> View Code</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about section" id="about">
+    <div class="container about-grid">
+
+      <div class="about-left reveal">
+        <div class="sec-tag">Who We Are</div>
+        <h2 class="sec-title">A Backend-First<br /><span class="grad-text">Engineering Team</span></h2>
+        <p class="about-text">We are a backend-focused development team specializing in scalable systems, APIs, and automation solutions using Java, Spring Boot, and modern tooling. We don't build pretty mockups — we build the infrastructure that powers real businesses.</p>
+        <p class="about-text">Every project is treated as our own: architected for growth, built for reliability, delivered on time.</p>
+
+        <div class="values">
+          <div class="val-item">
+            <div class="val-ico"><i class="fa-solid fa-shield-halved"></i></div>
+            <div><strong>Security First</strong><p>Every API hardened against vulnerabilities by default.</p></div>
+          </div>
+          <div class="val-item">
+            <div class="val-ico"><i class="fa-solid fa-chart-line"></i></div>
+            <div><strong>Built to Scale</strong><p>Architecture designed to handle 10x your current traffic.</p></div>
+          </div>
+          <div class="val-item">
+            <div class="val-ico"><i class="fa-solid fa-file-code"></i></div>
+            <div><strong>Clean Code</strong><p>Documented, testable code your team can own long-term.</p></div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn--primary" style="margin-top:32px">Work With Us <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="about-right reveal rd2">
+        <div class="skills-board">
+          <div class="sb-header">
+            <span class="sbd sbd--green"></span>
+            <span>Our Tech Stack</span>
+          </div>
+          <div class="skill-chips">
+            <div class="sc sc--indigo"><i class="fa-brands fa-java"></i> Java</div>
+            <div class="sc sc--indigo"><i class="fa-solid fa-leaf"></i> Spring Boot</div>
+            <div class="sc"><i class="fa-solid fa-link"></i> REST APIs</div>
+            <div class="sc"><i class="fa-solid fa-database"></i> JPA / Hibernate</div>
+            <div class="sc"><i class="fa-solid fa-shield-halved"></i> Spring Security</div>
+            <div class="sc"><i class="fa-solid fa-circle-nodes"></i> Microservices</div>
+            <div class="sc sc--amber"><i class="fa-solid fa-bolt"></i> n8n Automation</div>
+            <div class="sc"><i class="fa-solid fa-database"></i> MySQL</div>
+            <div class="sc"><i class="fa-solid fa-database"></i> PostgreSQL</div>
+            <div class="sc"><i class="fa-brands fa-git-alt"></i> Git / GitHub</div>
+            <div class="sc"><i class="fa-solid fa-diagram-project"></i> System Design</div>
+            <div class="sc sc--teal"><i class="fa-brands fa-docker"></i> Docker</div>
+          </div>
+          <div class="sb-metrics">
+            <div class="sbm"><span class="sbm-val">10+</span><span class="sbm-key">APIs Shipped</span></div>
+            <div class="sbm-sep"></div>
+            <div class="sbm"><span class="sbm-val">5+</span><span class="sbm-key">Automations Built</span></div>
+            <div class="sbm-sep"></div>
+            <div class="sbm"><span class="sbm-val">3+</span><span class="sbm-key">Yrs Experience</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact section" id="contact">
+    <div class="contact-blob"></div>
+    <div class="container contact-grid">
+
+      <div class="contact-left reveal">
+        <div class="sec-tag">Let's Talk</div>
+        <h2 class="sec-title">Ready to Build<br /><span class="grad-text">Something Powerful?</span></h2>
+        <p class="contact-intro">Tell us about your project. We'll respond with a clear plan, honest timeline, and fair pricing — usually within 24 hours.</p>
+
+        <div class="channels">
+          <!-- REPLACE: update email -->
+          <a href="mailto:your@email.com" class="ch-card">
+            <div class="ch-ico"><i class="fa-solid fa-envelope"></i></div>
+            <div><p class="ch-label">Email Us</p><p class="ch-val">your@email.com</p></div>
+          </a>
+          <!-- REPLACE: update WhatsApp number -->
+          <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="ch-card ch-card--wa">
+            <div class="ch-ico ch-ico--wa"><i class="fa-brands fa-whatsapp"></i></div>
+            <div><p class="ch-label">WhatsApp</p><p class="ch-val">Chat directly with our team</p></div>
+          </a>
+          <!-- REPLACE: update LinkedIn URL -->
+          <a href="https://linkedin.com/company/yourcompany" target="_blank" class="ch-card ch-card--li">
+            <div class="ch-ico ch-ico--li"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div><p class="ch-label">LinkedIn</p><p class="ch-val">Connect professionally</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-right reveal rd2">
+        <div class="form-card">
+          <h3 class="form-title">Send a Message</h3>
+          <form id="contactForm" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="fname">Your Name</label>
+                <input type="text" id="fname" name="name" placeholder="Jane Smith" required />
+                <span class="field-err" id="fnameErr">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label for="femail">Email</label>
+                <input type="email" id="femail" name="email" placeholder="jane@company.com" required />
+                <span class="field-err" id="femailErr">Enter a valid email.</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="subject" placeholder="e.g. E-commerce API project" />
+            </div>
+            <div class="field">
+              <label for="fmessage">Message</label>
+              <textarea id="fmessage" name="message" rows="5" placeholder="Describe your project — scope, timeline, and goals…" required></textarea>
+              <span class="field-err" id="fmessageErr">Please describe your project.</span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+              <span id="btnLabel">Send Message</span>
+              <i class="fa-solid fa-paper-plane" id="btnIco"></i>
+            </button>
+            <div class="form-success" id="formSuccess">
+              <i class="fa-solid fa-circle-check"></i>
+              <p>Message received! We'll reply within 24 hours.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <a href="#home" class="logo logo--footer">
+          <div class="logo-mark"><i class="fa-solid fa-layer-group"></i></div>
+          Scale<span>Forge</span>
+        </a>
+        <p>Building backend systems and automations that scale with your business.</p>
+        <div class="footer-socials">
+          <!-- REPLACE: update with your real URLs -->
+          <a href="https://github.com/yourorg" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/company/yourcompany" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:your@email.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#demos">Demos</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">API Development</a></li>
+          <li><a href="#services">E-commerce Backend</a></li>
+          <li><a href="#services">Automation</a></li>
+          <li><a href="#services">Database Design</a></li>
+          <li><a href="#services">Bug Fixing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <!-- REPLACE: update with your real details -->
+          <li><a href="mailto:your@email.com">your@email.com</a></li>
+          <li><a href="https://wa.me/91XXXXXXXXXX" target="_blank">WhatsApp Us</a></li>
+          <li><a href="https://github.com/yourorg" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/company/yourcompany" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; <span id="year"></span> ScaleForge. All rights reserved.</p>
+        <p class="ft-tagline">Engineered for scale. Delivered on time.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
