@@ -1382,3 +1382,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .sec-title { font-size: 1.7rem; }
 }
+
+/* ──────────── SEO KEYWORD SECTION ──────────── */
+.seo-section {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+}
+.seo-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  max-width: 780px;
+}
+.seo-inner h2 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-2);
+}
+.seo-inner p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.seo-inner strong { color: var(--text); font-weight: 600; }
