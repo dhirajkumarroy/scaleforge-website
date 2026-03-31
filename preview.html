@@ -446,7 +446,8 @@
   <div class="preview-bar">
 
     <div class="bar-left">
-      <a href="store.html" class="back-btn">
+      <!-- <a href="store.html" class="back-btn"> -->
+        <a href="/store" class="back-btn">
         <i class="fa-solid fa-arrow-left"></i>
         <span>Back to Store</span>
       </a>
@@ -499,7 +500,7 @@
     </div>
     <div class="url-field">
       <i class="fa-solid fa-lock"></i>
-      <span id="urlText">scaleforge.com/portfolios/…</span>
+      <span id="urlText">scaleforgehq.com/portfolios/…</span>
     </div>
   </div>
 
@@ -613,8 +614,10 @@
     document.title = `${project.name} — ScaleForge Preview`;
     projectName.textContent = project.name;
     projectTag.textContent  = project.type;
-    urlText.textContent     = `scaleforge.com/portfolios/${project.id}/`;
-    openTabBtn.href         = srcPath;
+    // urlText.textContent     = `scaleforge.com/portfolios/${project.id}/`;
+    urlText.textContent = `scaleforgehq.com/portfolios/${project.id}/`;
+    // openTabBtn.href         = srcPath;
+    openTabBtn.href = `/preview?project=${project.id}`;
     buyBtn.href             = `https://wa.me/${WA_NUMBER}?text=${project.waMsg}`;
 
     /* Load iframe */
@@ -658,7 +661,7 @@
     PROJECT_CATALOG.forEach(p => {
       const item = document.createElement('a');
       item.className = `drawer-item${p.id === projectId ? ' active' : ''}`;
-      item.href = `preview.html?project=${p.id}`;
+      item.href = `/preview?project=${p.id}`;
       item.innerHTML = `
         <div class="di-icon di-icon--${p.color}">
           <i class="fa-solid ${p.icon}"></i>
