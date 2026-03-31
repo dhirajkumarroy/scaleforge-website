@@ -1,578 +1,743 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Preview — ScaleForge</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview — ScaleForge</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzMiAzMic+PHJlY3Qgd2lkdGg9JzMyJyBoZWlnaHQ9JzMyJyByaeD0nNycgZmlsbD0nIzRmNDZlNScvPjx0ZXh0IHg9JzUwJScgeT0nNTQlJyBkb21pbmFudC1iYXNlbGluZT0nbWlkZGxlJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LXNpemU9JzE4JyBmb250LWZhbWlseT0nQXJpYWwnIGZpbGw9J3doaXRlJz5TRjwvdGV4dD48L3N2Zz4=" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
 
-  <style>
-    /* ── Reset ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <style>
+      /* ── Reset ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    :root {
-      --bar-h:   54px;
-      --indigo:  #4f46e5;
-      --indigo-d:#3730a3;
-      --cyan:    #06b6d4;
-      --amber:   #f59e0b;
-      --bg:      #0f172a;
-      --bg-2:    #1e293b;
-      --border:  rgba(255,255,255,0.08);
-      --text:    #f1f5f9;
-      --muted:   #94a3b8;
-      --faint:   #475569;
-      --green:   #22c55e;
-      --font-d:  'Outfit', sans-serif;
-      --font-b:  'Plus Jakarta Sans', sans-serif;
-      --ease:    cubic-bezier(.4,0,.2,1);
-    }
+      :root {
+        --bar-h: 54px;
+        --indigo: #4f46e5;
+        --indigo-d: #3730a3;
+        --cyan: #06b6d4;
+        --amber: #f59e0b;
+        --bg: #0f172a;
+        --bg-2: #1e293b;
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --faint: #475569;
+        --green: #22c55e;
+        --font-d: "Outfit", sans-serif;
+        --font-b: "Plus Jakarta Sans", sans-serif;
+        --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-    body {
-      font-family: var(--font-b);
-      background: var(--bg);
-      color: var(--text);
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
+      body {
+        font-family: var(--font-b);
+        background: var(--bg);
+        color: var(--text);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        TOP BAR
     ══════════════════════════════════════ */
-    .preview-bar {
-      height: var(--bar-h);
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      gap: 16px;
-      flex-shrink: 0;
-      z-index: 100;
-    }
+      .preview-bar {
+        height: var(--bar-h);
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        gap: 16px;
+        flex-shrink: 0;
+        z-index: 100;
+      }
 
-    /* Left: back + project info */
-    .bar-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      min-width: 0;
-    }
+      /* Left: back + project info */
+      .bar-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        min-width: 0;
+      }
 
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 14px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: all .2s var(--ease);
-    }
-    .back-btn:hover {
-      background: rgba(255,255,255,.09);
-      color: var(--text);
-      border-color: rgba(255,255,255,.15);
-    }
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s var(--ease);
+      }
+      .back-btn:hover {
+        background: rgba(255, 255, 255, 0.09);
+        color: var(--text);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
 
-    .bar-divider { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; }
+      .bar-divider {
+        width: 1px;
+        height: 22px;
+        background: var(--border);
+        flex-shrink: 0;
+      }
 
-    .project-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .project-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-      box-shadow: 0 0 0 3px rgba(34,197,94,.2);
-      animation: livePulse 2s ease-in-out infinite;
-    }
-    @keyframes livePulse {
-      0%,100% { box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
-      50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
-    }
-    .project-name {
-      font-family: var(--font-d);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .project-tag {
-      padding: 3px 9px;
-      background: rgba(79,70,229,.15);
-      border: 1px solid rgba(79,70,229,.25);
-      border-radius: 100px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: #818cf8;
-      white-space: nowrap;
-    }
+      .project-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+      .project-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        flex-shrink: 0;
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+        animation: livePulse 2s ease-in-out infinite;
+      }
+      @keyframes livePulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+        }
+        50% {
+          box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+        }
+      }
+      .project-name {
+        font-family: var(--font-d);
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .project-tag {
+        padding: 3px 9px;
+        background: rgba(79, 70, 229, 0.15);
+        border: 1px solid rgba(79, 70, 229, 0.25);
+        border-radius: 100px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: #818cf8;
+        white-space: nowrap;
+      }
 
-    /* Center: viewport switcher */
-    .bar-center {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 4px;
-    }
+      /* Center: viewport switcher */
+      .bar-center {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        background: var(--bg-2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 4px;
+      }
 
-    .vp-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px; height: 28px;
-      border-radius: 5px;
-      border: none;
-      background: transparent;
-      color: var(--faint);
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all .2s var(--ease);
-    }
-    .vp-btn:hover { color: var(--muted); background: rgba(255,255,255,.05); }
-    .vp-btn.active {
-      background: var(--indigo);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(79,70,229,.4);
-    }
+      .vp-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 28px;
+        border-radius: 5px;
+        border: none;
+        background: transparent;
+        color: var(--faint);
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s var(--ease);
+      }
+      .vp-btn:hover {
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .vp-btn.active {
+        background: var(--indigo);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+      }
 
-    /* Right: actions */
-    .bar-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
+      /* Right: actions */
+      .bar-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
 
-    .bar-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 16px;
-      border-radius: 7px;
-      font-family: var(--font-b);
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all .2s var(--ease);
-      border: none;
-    }
-    .bar-btn--ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-    .bar-btn--ghost:hover {
-      color: var(--text);
-      border-color: rgba(255,255,255,.15);
-      background: rgba(255,255,255,.05);
-    }
-    .bar-btn--primary {
-      background: var(--indigo);
-      color: #fff;
-    }
-    .bar-btn--primary:hover {
-      background: var(--indigo-d);
-      box-shadow: 0 4px 16px rgba(79,70,229,.35);
-    }
-    .bar-btn--wa {
-      background: #25d366;
-      color: #fff;
-    }
-    .bar-btn--wa:hover {
-      background: #1fbe59;
-      box-shadow: 0 4px 16px rgba(37,211,102,.3);
-    }
+      .bar-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 16px;
+        border-radius: 7px;
+        font-family: var(--font-b);
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.2s var(--ease);
+        border: none;
+      }
+      .bar-btn--ghost {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+      .bar-btn--ghost:hover {
+        color: var(--text);
+        border-color: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .bar-btn--primary {
+        background: var(--indigo);
+        color: #fff;
+      }
+      .bar-btn--primary:hover {
+        background: var(--indigo-d);
+        box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
+      }
+      .bar-btn--wa {
+        background: #25d366;
+        color: #fff;
+      }
+      .bar-btn--wa:hover {
+        background: #1fbe59;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        URL BAR (address strip)
     ══════════════════════════════════════ */
-    .url-bar {
-      height: 36px;
-      background: var(--bg-2);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    .url-dots { display: flex; gap: 5px; }
-    .url-dot  { width: 10px; height: 10px; border-radius: 50%; }
-    .url-dot:nth-child(1) { background: #ff5f57; }
-    .url-dot:nth-child(2) { background: #febc2e; }
-    .url-dot:nth-child(3) { background: #28c840; }
+      .url-bar {
+        height: 36px;
+        background: var(--bg-2);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .url-dots {
+        display: flex;
+        gap: 5px;
+      }
+      .url-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .url-dot:nth-child(1) {
+        background: #ff5f57;
+      }
+      .url-dot:nth-child(2) {
+        background: #febc2e;
+      }
+      .url-dot:nth-child(3) {
+        background: #28c840;
+      }
 
-    .url-field {
-      flex: 1;
-      max-width: 480px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 4px 12px;
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin: 0 auto;
-    }
-    .url-field i { color: var(--green); font-size: 0.7rem; }
-    #urlText { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .url-field {
+        flex: 1;
+        max-width: 480px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 4px 12px;
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin: 0 auto;
+      }
+      .url-field i {
+        color: var(--green);
+        font-size: 0.7rem;
+      }
+      #urlText {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        IFRAME WRAPPER
     ══════════════════════════════════════ */
-    .iframe-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0a0d14;
-      overflow: hidden;
-      position: relative;
-      transition: all .35s var(--ease);
-    }
+      .iframe-wrap {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0a0d14;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.35s var(--ease);
+      }
 
-    /* Viewport size containers */
-    .iframe-wrap.vp-desktop  { padding: 0; }
-    .iframe-wrap.vp-tablet   { padding: 24px; }
-    .iframe-wrap.vp-mobile   { padding: 24px; }
+      /* Viewport size containers */
+      .iframe-wrap.vp-desktop {
+        padding: 0;
+      }
+      .iframe-wrap.vp-tablet {
+        padding: 24px;
+      }
+      .iframe-wrap.vp-mobile {
+        padding: 24px;
+      }
 
-    .iframe-device {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: all .35s var(--ease);
-      display: flex;
-      align-items: stretch;
-    }
-    .vp-tablet  .iframe-device { max-width: 768px;  max-height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--border), 0 24px 80px rgba(0,0,0,.6); }
-    .vp-mobile  .iframe-device { max-width: 390px;  max-height: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px var(--border), 0 24px 80px rgba(0,0,0,.7); }
+      .iframe-device {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: all 0.35s var(--ease);
+        display: flex;
+        align-items: stretch;
+      }
+      .vp-tablet .iframe-device {
+        max-width: 768px;
+        max-height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow:
+          0 0 0 1px var(--border),
+          0 24px 80px rgba(0, 0, 0, 0.6);
+      }
+      .vp-mobile .iframe-device {
+        max-width: 390px;
+        max-height: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow:
+          0 0 0 1px var(--border),
+          0 24px 80px rgba(0, 0, 0, 0.7);
+      }
 
-    #previewFrame {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: #fff;
-      display: block;
-    }
+      #previewFrame {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: #fff;
+        display: block;
+      }
 
-    /* Loading overlay */
-    .loading-overlay {
-      position: absolute;
-      inset: 0;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      z-index: 10;
-      transition: opacity .4s ease;
-    }
-    .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+      /* Loading overlay */
+      .loading-overlay {
+        position: absolute;
+        inset: 0;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        z-index: 10;
+        transition: opacity 0.4s ease;
+      }
+      .loading-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
 
-    .loading-spinner {
-      width: 40px; height: 40px;
-      border: 3px solid var(--border);
-      border-top-color: var(--indigo);
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid var(--border);
+        border-top-color: var(--indigo);
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-    .loading-text {
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
+      .loading-text {
+        font-size: 0.85rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
 
-    /* Error state */
-    .error-screen {
-      position: absolute;
-      inset: 0;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      text-align: center;
-      padding: 40px;
-    }
-    .error-screen.show { display: flex; }
-    .error-screen i { font-size: 2.5rem; color: var(--faint); }
-    .error-screen h3 { font-family: var(--font-d); font-size: 1.1rem; color: var(--text); }
-    .error-screen p  { font-size: 0.85rem; color: var(--muted); max-width: 360px; line-height: 1.7; }
+      /* Error state */
+      .error-screen {
+        position: absolute;
+        inset: 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        text-align: center;
+        padding: 40px;
+      }
+      .error-screen.show {
+        display: flex;
+      }
+      .error-screen i {
+        font-size: 2.5rem;
+        color: var(--faint);
+      }
+      .error-screen h3 {
+        font-family: var(--font-d);
+        font-size: 1.1rem;
+        color: var(--text);
+      }
+      .error-screen p {
+        font-size: 0.85rem;
+        color: var(--muted);
+        max-width: 360px;
+        line-height: 1.7;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        PROJECT SELECTOR DRAWER
     ══════════════════════════════════════ */
-    .drawer-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.6);
-      backdrop-filter: blur(4px);
-      z-index: 200;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .3s ease;
-    }
-    .drawer-overlay.open { opacity: 1; pointer-events: all; }
+      .drawer-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        z-index: 200;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .drawer-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
 
-    .drawer {
-      position: fixed;
-      top: 0; right: 0;
-      width: 320px;
-      height: 100%;
-      background: #0f1729;
-      border-left: 1px solid var(--border);
-      z-index: 201;
-      transform: translateX(100%);
-      transition: transform .35s var(--ease);
-      display: flex;
-      flex-direction: column;
-    }
-    .drawer.open { transform: translateX(0); }
+      .drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 320px;
+        height: 100%;
+        background: #0f1729;
+        border-left: 1px solid var(--border);
+        z-index: 201;
+        transform: translateX(100%);
+        transition: transform 0.35s var(--ease);
+        display: flex;
+        flex-direction: column;
+      }
+      .drawer.open {
+        transform: translateX(0);
+      }
 
-    .drawer-header {
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .drawer-header h3 {
-      font-family: var(--font-d);
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-    .drawer-close {
-      width: 30px; height: 30px;
-      border-radius: 6px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all .2s;
-    }
-    .drawer-close:hover { background: rgba(255,255,255,.1); color: var(--text); }
+      .drawer-header {
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .drawer-header h3 {
+        font-family: var(--font-d);
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+      .drawer-close {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+      }
+      .drawer-close:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+      }
 
-    .drawer-list {
-      overflow-y: auto;
-      flex: 1;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+      .drawer-list {
+        overflow-y: auto;
+        flex: 1;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
 
-    .drawer-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 9px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.02);
-      cursor: pointer;
-      transition: all .2s var(--ease);
-      text-decoration: none;
-      color: inherit;
-    }
-    .drawer-item:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
-    .drawer-item.active { background: rgba(79,70,229,.12); border-color: rgba(79,70,229,.3); }
+      .drawer-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 9px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.02);
+        cursor: pointer;
+        transition: all 0.2s var(--ease);
+        text-decoration: none;
+        color: inherit;
+      }
+      .drawer-item:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .drawer-item.active {
+        background: rgba(79, 70, 229, 0.12);
+        border-color: rgba(79, 70, 229, 0.3);
+      }
 
-    .di-icon {
-      width: 38px; height: 38px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .di-icon--indigo { background: rgba(79,70,229,.15); color: #818cf8; }
-    .di-icon--teal   { background: rgba(6,182,212,.12);  color: #22d3ee; }
-    .di-icon--amber  { background: rgba(245,158,11,.12); color: #fbbf24; }
+      .di-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+      .di-icon--indigo {
+        background: rgba(79, 70, 229, 0.15);
+        color: #818cf8;
+      }
+      .di-icon--teal {
+        background: rgba(6, 182, 212, 0.12);
+        color: #22d3ee;
+      }
+      .di-icon--amber {
+        background: rgba(245, 158, 11, 0.12);
+        color: #fbbf24;
+      }
 
-    .di-info { flex: 1; min-width: 0; }
-    .di-name { font-size: 0.85rem; font-weight: 600; color: var(--text); }
-    .di-type { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-    .di-arrow { color: var(--faint); font-size: 0.75rem; }
+      .di-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .di-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .di-type {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .di-arrow {
+        color: var(--faint);
+        font-size: 0.75rem;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════ */
-    @media (max-width: 640px) {
-      .bar-center { display: none; }
-      .project-tag { display: none; }
-      .bar-btn span { display: none; }
-      .bar-btn { padding: 7px 10px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ══════════ TOP BAR ══════════ -->
-  <div class="preview-bar">
-
-    <div class="bar-left">
-      <!-- <a href="store.html" class="back-btn"> -->
+      @media (max-width: 640px) {
+        .bar-center {
+          display: none;
+        }
+        .project-tag {
+          display: none;
+        }
+        .bar-btn span {
+          display: none;
+        }
+        .bar-btn {
+          padding: 7px 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════ TOP BAR ══════════ -->
+    <div class="preview-bar">
+      <div class="bar-left">
+        <!-- <a href="store.html" class="back-btn"> -->
         <a href="/store" class="back-btn">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span>Back to Store</span>
-      </a>
-      <div class="bar-divider"></div>
-      <div class="project-info">
-        <span class="project-dot"></span>
-        <span class="project-name" id="projectName">Loading…</span>
-        <span class="project-tag" id="projectTag">Preview</span>
-      </div>
-    </div>
-
-    <!-- Viewport switcher -->
-    <div class="bar-center">
-      <button class="vp-btn active" data-vp="desktop" title="Desktop">
-        <i class="fa-solid fa-desktop"></i>
-      </button>
-      <button class="vp-btn" data-vp="tablet" title="Tablet">
-        <i class="fa-solid fa-tablet-screen-button"></i>
-      </button>
-      <button class="vp-btn" data-vp="mobile" title="Mobile">
-        <i class="fa-solid fa-mobile-screen"></i>
-      </button>
-    </div>
-
-    <div class="bar-right">
-      <button class="bar-btn bar-btn--ghost" id="allProjectsBtn" title="Browse all projects">
-        <i class="fa-solid fa-grid-2"></i>
-        <span>All Projects</span>
-      </button>
-      <a href="#" class="bar-btn bar-btn--ghost" id="openTabBtn" title="Open in new tab" target="_blank">
-        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        <span>Open</span>
-      </a>
-      <!-- REPLACE: update WhatsApp number in the href below -->
-      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20want%20to%20buy%20this%20project%20from%20ScaleForge." 
-         target="_blank" class="bar-btn bar-btn--wa" id="buyBtn">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span>Buy Now</span>
-      </a>
-    </div>
-
-  </div>
-
-  <!-- ══════════ URL BAR ══════════ -->
-  <div class="url-bar">
-    <div class="url-dots">
-      <div class="url-dot"></div>
-      <div class="url-dot"></div>
-      <div class="url-dot"></div>
-    </div>
-    <div class="url-field">
-      <i class="fa-solid fa-lock"></i>
-      <span id="urlText">scaleforgehq.com/portfolios/…</span>
-    </div>
-  </div>
-
-  <!-- ══════════ IFRAME AREA ══════════ -->
-  <div class="iframe-wrap vp-desktop" id="iframeWrap">
-    <div class="iframe-device" id="iframeDevice">
-
-      <!-- Loading state -->
-      <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-spinner"></div>
-        <p class="loading-text">Loading preview…</p>
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Store</span>
+        </a>
+        <div class="bar-divider"></div>
+        <div class="project-info">
+          <span class="project-dot"></span>
+          <span class="project-name" id="projectName">Loading…</span>
+          <span class="project-tag" id="projectTag">Preview</span>
+        </div>
       </div>
 
-      <!-- Error state -->
-      <div class="error-screen" id="errorScreen">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <h3>Preview Not Found</h3>
-        <p>The project folder <code id="errorPath"></code> doesn't exist yet. Create <code>portfolios/pX/index.html</code> to enable this preview.</p>
-        <a href="store.html" class="bar-btn bar-btn--primary" style="margin-top:8px">
-          <i class="fa-solid fa-arrow-left"></i> Back to Store
+      <!-- Viewport switcher -->
+      <div class="bar-center">
+        <button class="vp-btn active" data-vp="desktop" title="Desktop">
+          <i class="fa-solid fa-desktop"></i>
+        </button>
+        <button class="vp-btn" data-vp="tablet" title="Tablet">
+          <i class="fa-solid fa-tablet-screen-button"></i>
+        </button>
+        <button class="vp-btn" data-vp="mobile" title="Mobile">
+          <i class="fa-solid fa-mobile-screen"></i>
+        </button>
+      </div>
+
+      <div class="bar-right">
+        <button
+          class="bar-btn bar-btn--ghost"
+          id="allProjectsBtn"
+          title="Browse all projects"
+        >
+          <i class="fa-solid fa-grid-2"></i>
+          <span>All Projects</span>
+        </button>
+        <a
+          href="#"
+          class="bar-btn bar-btn--ghost"
+          id="openTabBtn"
+          title="Open in new tab"
+          target="_blank"
+        >
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Open</span>
+        </a>
+        <!-- REPLACE: update WhatsApp number in the href below -->
+        <a
+          href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20want%20to%20buy%20this%20project%20from%20ScaleForge."
+          target="_blank"
+          class="bar-btn bar-btn--wa"
+          id="buyBtn"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Buy Now</span>
         </a>
       </div>
-
-      <iframe id="previewFrame" title="Project Preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-
     </div>
-  </div>
 
-  <!-- ══════════ PROJECTS DRAWER ══════════ -->
-  <div class="drawer-overlay" id="drawerOverlay"></div>
-  <div class="drawer" id="drawer">
-    <div class="drawer-header">
-      <h3>All Projects</h3>
-      <button class="drawer-close" id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
+    <!-- ══════════ URL BAR ══════════ -->
+    <div class="url-bar">
+      <div class="url-dots">
+        <div class="url-dot"></div>
+        <div class="url-dot"></div>
+        <div class="url-dot"></div>
+      </div>
+      <div class="url-field">
+        <i class="fa-solid fa-lock"></i>
+        <span id="urlText">scaleforgehq.com/portfolios/…</span>
+      </div>
     </div>
-    <div class="drawer-list" id="drawerList">
-      <!-- Populated by JS from PROJECT_CATALOG -->
-    </div>
-  </div>
 
-  <script>
-    /* ═══════════════════════════════════════════════════
+    <!-- ══════════ IFRAME AREA ══════════ -->
+    <div class="iframe-wrap vp-desktop" id="iframeWrap">
+      <div class="iframe-device" id="iframeDevice">
+        <!-- Loading state -->
+        <div class="loading-overlay" id="loadingOverlay">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Loading preview…</p>
+        </div>
+
+        <!-- Error state -->
+        <div class="error-screen" id="errorScreen">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <h3>Preview Not Found</h3>
+          <p>
+            The project folder <code id="errorPath"></code> doesn't exist yet.
+            Create <code>portfolios/pX/index.html</code> to enable this preview.
+          </p>
+          <a
+            href="store.html"
+            class="bar-btn bar-btn--primary"
+            style="margin-top: 8px"
+          >
+            <i class="fa-solid fa-arrow-left"></i> Back to Store
+          </a>
+        </div>
+
+        <iframe
+          id="previewFrame"
+          title="Project Preview"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- ══════════ PROJECTS DRAWER ══════════ -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="drawer" id="drawer">
+      <div class="drawer-header">
+        <h3>All Projects</h3>
+        <button class="drawer-close" id="drawerClose">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="drawer-list" id="drawerList">
+        <!-- Populated by JS from PROJECT_CATALOG -->
+      </div>
+    </div>
+
+    <script>
+      /* ═══════════════════════════════════════════════════
        PROJECT CATALOG
        Add / remove projects here — the whole UI updates
        automatically.
        ═══════════════════════════════════════════════════ */
-    const PROJECT_CATALOG = [
-      {
-        id:    'p1',
-        name:  'PaperKart E-commerce',
-        type:  'Full-Stack System',
-        icon:  'fa-cart-shopping',
-        color: 'indigo',
-        waMsg: 'Hi%2C%20I%20want%20to%20buy%20PaperKart%20E-commerce%20Backend%20from%20ScaleForge.'
-      },
-      {
-        id:    'p2',
-        name:  'Secure REST API',
-        type:  'Enterprise Boilerplate',
-        icon:  'fa-key',
-        color: 'amber',
-        waMsg: 'Hi%2C%20I%20want%20to%20buy%20the%20Secure%20REST%20API%20Starter%20from%20ScaleForge.'
-      },
-      {
-        id:    'p3',
-        name:  'Automation Workflow',
-        type:  'n8n Pipeline System',
-        icon:  'fa-bolt',
-        color: 'teal',
-        waMsg: 'Hi%2C%20I%20want%20to%20buy%20the%20Automation%20Workflow%20System%20from%20ScaleForge.'
-      }
-      /* ── Add more projects here ──
+      const PROJECT_CATALOG = [
+        {
+          id: "p1",
+          name: "PaperKart E-commerce",
+          type: "Full-Stack System",
+          icon: "fa-cart-shopping",
+          color: "indigo",
+          waMsg:
+            "Hi%2C%20I%20want%20to%20buy%20PaperKart%20E-commerce%20Backend%20from%20ScaleForge.",
+        },
+        {
+          id: "p2",
+          name: "Secure REST API",
+          type: "Enterprise Boilerplate",
+          icon: "fa-key",
+          color: "amber",
+          waMsg:
+            "Hi%2C%20I%20want%20to%20buy%20the%20Secure%20REST%20API%20Starter%20from%20ScaleForge.",
+        },
+        {
+          id: "p3",
+          name: "Automation Workflow",
+          type: "n8n Pipeline System",
+          icon: "fa-bolt",
+          color: "teal",
+          waMsg:
+            "Hi%2C%20I%20want%20to%20buy%20the%20Automation%20Workflow%20System%20from%20ScaleForge.",
+        },
+        /* ── Add more projects here ──
       {
         id:    'p4',
         name:  'Node.js Microservice',
@@ -582,87 +747,90 @@
         waMsg: 'Hi%2C%20I%20want%20to%20buy%20the%20Node.js%20Microservice%20Starter%20from%20ScaleForge.'
       },
       */
-    ];
+      ];
 
-    /* ─────────────────────────────────────
+      /* ─────────────────────────────────────
        WHATSAPP BASE NUMBER
        REPLACE: update your number here
     ───────────────────────────────────── */
-    const WA_NUMBER = '91XXXXXXXXXX';   // e.g. '919304730973'
+      const WA_NUMBER = "91XXXXXXXXXX"; // e.g. '919304730973'
 
-    /* ═══════════════════════════════════════════════════
+      /* ═══════════════════════════════════════════════════
        INIT
     ═══════════════════════════════════════════════════ */
-    const frame          = document.getElementById('previewFrame');
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    const errorScreen    = document.getElementById('errorScreen');
-    const errorPath      = document.getElementById('errorPath');
-    const projectName    = document.getElementById('projectName');
-    const projectTag     = document.getElementById('projectTag');
-    const urlText        = document.getElementById('urlText');
-    const openTabBtn     = document.getElementById('openTabBtn');
-    const buyBtn         = document.getElementById('buyBtn');
-    const iframeWrap     = document.getElementById('iframeWrap');
+      const frame = document.getElementById("previewFrame");
+      const loadingOverlay = document.getElementById("loadingOverlay");
+      const errorScreen = document.getElementById("errorScreen");
+      const errorPath = document.getElementById("errorPath");
+      const projectName = document.getElementById("projectName");
+      const projectTag = document.getElementById("projectTag");
+      const urlText = document.getElementById("urlText");
+      const openTabBtn = document.getElementById("openTabBtn");
+      const buyBtn = document.getElementById("buyBtn");
+      const iframeWrap = document.getElementById("iframeWrap");
 
-    /* Read ?project=pX from URL */
-    const params    = new URLSearchParams(window.location.search);
-    const projectId = params.get('project') || 'p1';
-    const project   = PROJECT_CATALOG.find(p => p.id === projectId) || PROJECT_CATALOG[0];
-    const srcPath   = `portfolios/${project.id}/index.html`;
+      /* Read ?project=pX from URL */
+      const params = new URLSearchParams(window.location.search);
+      const projectId = params.get("project") || "p1";
+      const project =
+        PROJECT_CATALOG.find((p) => p.id === projectId) || PROJECT_CATALOG[0];
+      const srcPath = `portfolios/${project.id}/index.html`;
 
-    /* Update UI with project info */
-    document.title = `${project.name} — ScaleForge Preview`;
-    projectName.textContent = project.name;
-    projectTag.textContent  = project.type;
-    // urlText.textContent     = `scaleforge.com/portfolios/${project.id}/`;
-    urlText.textContent = `scaleforgehq.com/portfolios/${project.id}/`;
-    // openTabBtn.href         = srcPath;
-    openTabBtn.href = `/preview?project=${project.id}`;
-    buyBtn.href             = `https://wa.me/${WA_NUMBER}?text=${project.waMsg}`;
+      /* Update UI with project info */
+      document.title = `${project.name} — ScaleForge Preview`;
+      projectName.textContent = project.name;
+      projectTag.textContent = project.type;
+      // urlText.textContent     = `scaleforge.com/portfolios/${project.id}/`;
+      urlText.textContent = `scaleforgehq.com/portfolios/${project.id}/`;
+      // openTabBtn.href         = srcPath;
+      openTabBtn.href = `/preview?project=${project.id}`;
+      buyBtn.href = `https://wa.me/${WA_NUMBER}?text=${project.waMsg}`;
 
-    /* Load iframe */
-    frame.addEventListener('load', () => {
-      loadingOverlay.classList.add('hidden');
-    });
+      /* Load iframe */
+      frame.addEventListener("load", () => {
+        loadingOverlay.classList.add("hidden");
+      });
 
-    frame.addEventListener('error', () => {
-      loadingOverlay.classList.add('hidden');
-      errorScreen.classList.add('show');
-      errorPath.textContent = srcPath;
-    });
+      frame.addEventListener("error", () => {
+        loadingOverlay.classList.add("hidden");
+        errorScreen.classList.add("show");
+        errorPath.textContent = srcPath;
+      });
 
-    /* Slight delay then load so loading spinner is visible */
-    setTimeout(() => {
-      frame.src = srcPath;
-    }, 300);
+      /* Slight delay then load so loading spinner is visible */
+      setTimeout(() => {
+        frame.src = srcPath;
+      }, 300);
 
-    /* ═══════════════════════════════════════════════════
+      /* ═══════════════════════════════════════════════════
        VIEWPORT SWITCHER
     ═══════════════════════════════════════════════════ */
-    document.querySelectorAll('.vp-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.vp-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const vp = btn.dataset.vp;
-        iframeWrap.className = `iframe-wrap vp-${vp}`;
+      document.querySelectorAll(".vp-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".vp-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const vp = btn.dataset.vp;
+          iframeWrap.className = `iframe-wrap vp-${vp}`;
+        });
       });
-    });
 
-    /* ═══════════════════════════════════════════════════
+      /* ═══════════════════════════════════════════════════
        PROJECTS DRAWER
     ═══════════════════════════════════════════════════ */
-    const drawer        = document.getElementById('drawer');
-    const drawerOverlay = document.getElementById('drawerOverlay');
-    const drawerList    = document.getElementById('drawerList');
-    const allProjectsBtn = document.getElementById('allProjectsBtn');
-    const drawerClose   = document.getElementById('drawerClose');
+      const drawer = document.getElementById("drawer");
+      const drawerOverlay = document.getElementById("drawerOverlay");
+      const drawerList = document.getElementById("drawerList");
+      const allProjectsBtn = document.getElementById("allProjectsBtn");
+      const drawerClose = document.getElementById("drawerClose");
 
-    /* Populate drawer from catalog */
-    PROJECT_CATALOG.forEach(p => {
-      const item = document.createElement('a');
-      item.className = `drawer-item${p.id === projectId ? ' active' : ''}`;
-      item.href = `/preview?project=${p.id}`;
-      item.innerHTML = `
+      /* Populate drawer from catalog */
+      PROJECT_CATALOG.forEach((p) => {
+        const item = document.createElement("a");
+        item.className = `drawer-item${p.id === projectId ? " active" : ""}`;
+        item.href = `/preview?project=${p.id}`;
+        item.innerHTML = `
         <div class="di-icon di-icon--${p.color}">
           <i class="fa-solid ${p.icon}"></i>
         </div>
@@ -672,28 +840,28 @@
         </div>
         <i class="fa-solid fa-chevron-right di-arrow"></i>
       `;
-      drawerList.appendChild(item);
-    });
+        drawerList.appendChild(item);
+      });
 
-    function openDrawer() {
-      drawer.classList.add('open');
-      drawerOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      drawerOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+      function openDrawer() {
+        drawer.classList.add("open");
+        drawerOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeDrawer() {
+        drawer.classList.remove("open");
+        drawerOverlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
 
-    allProjectsBtn.addEventListener('click', openDrawer);
-    drawerClose.addEventListener('click', closeDrawer);
-    drawerOverlay.addEventListener('click', closeDrawer);
+      allProjectsBtn.addEventListener("click", openDrawer);
+      drawerClose.addEventListener("click", closeDrawer);
+      drawerOverlay.addEventListener("click", closeDrawer);
 
-    /* Keyboard: Escape closes drawer */
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeDrawer();
-    });
-  </script>
-</body>
+      /* Keyboard: Escape closes drawer */
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeDrawer();
+      });
+    </script>
+  </body>
 </html>
